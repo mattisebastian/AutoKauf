@@ -1,0 +1,38 @@
+body {background-color:floralwhite;
+font-family:Arial;
+color:steelblue;
+}
+h1 { text-align:left;
+font-size:18pt;
+font-style:normal;
+font-weight:bold;
+border-bottom:solid thin;
+}
+table {border-collapse:collapse;
+border-width:1px;
+border-style:solid;
+border-color:navajowhite;
+}
+tr {height:30px;
+}
+.tr_selected {font-weight:bold;
+background-color:sandybrown;
+color:floralwhite;
+}
+.tr_hover {font-weight:bold;
+background-color:navajowhite;
+color:floralwhite;
+cursor:pointer;
+}
+th {text-align:center;
+background-color:navajowhite;
+border-bottom:solid thin;
+padding:5px;
+padding-top:10px;
+}
+td {width:150px;
+border-top:dashed thin;
+border-color:navajowhite;
+padding-top:5px;
+padding-left:5px;
+}
