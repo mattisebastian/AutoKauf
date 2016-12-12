@@ -16,7 +16,7 @@ public class AutoKaufSoapBindingStub extends org.apache.axis.client.Stub impleme
     static org.apache.axis.description.OperationDesc [] _operations;
 
     static {
-        _operations = new org.apache.axis.description.OperationDesc[3];
+        _operations = new org.apache.axis.description.OperationDesc[4];
         _initOperationDesc1();
     }
 
@@ -55,6 +55,19 @@ public class AutoKaufSoapBindingStub extends org.apache.axis.client.Stub impleme
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
         _operations[2] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("farbeAendern");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "farbe"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "autoID"), org.apache.axis.description.ParameterDesc.INOUT, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "long"), long.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "boolean"));
+        oper.setReturnClass(boolean.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("", "erfolgreichGeaendert"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        _operations[3] = oper;
 
     }
 
@@ -167,7 +180,7 @@ public class AutoKaufSoapBindingStub extends org.apache.axis.client.Stub impleme
         org.apache.axis.client.Call _call = createCall();
         _call.setOperation(_operations[0]);
         _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("http://www.example.org/AKWS1011GXXtemp/kaufeAuto");
+        _call.setSOAPActionURI("http://www.example.org/AKWS1011GXX/kaufeAuto");
         _call.setEncodingStyle(null);
         _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
         _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
@@ -201,7 +214,7 @@ public class AutoKaufSoapBindingStub extends org.apache.axis.client.Stub impleme
         org.apache.axis.client.Call _call = createCall();
         _call.setOperation(_operations[1]);
         _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("http://www.example.org/AKWS1011GXXtemp/verkaufeAuto");
+        _call.setSOAPActionURI("http://www.example.org/AKWS1011GXX/verkaufeAuto");
         _call.setEncodingStyle(null);
         _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
         _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
@@ -235,7 +248,7 @@ public class AutoKaufSoapBindingStub extends org.apache.axis.client.Stub impleme
         org.apache.axis.client.Call _call = createCall();
         _call.setOperation(_operations[2]);
         _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("http://www.example.org/AKWS1011GXXtemp/alleAutosAnzeigen");
+        _call.setSOAPActionURI("http://www.example.org/AKWS1011GXX/alleAutosAnzeigen");
         _call.setEncodingStyle(null);
         _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
         _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
@@ -255,6 +268,47 @@ public class AutoKaufSoapBindingStub extends org.apache.axis.client.Stub impleme
                 return (AKWS1011GXX.AutoKauf.Types.Auto[]) _resp;
             } catch (java.lang.Exception _exception) {
                 return (AKWS1011GXX.AutoKauf.Types.Auto[]) org.apache.axis.utils.JavaUtils.convert(_resp, AKWS1011GXX.AutoKauf.Types.Auto[].class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+  throw axisFaultException;
+}
+    }
+
+    public boolean farbeAendern(java.lang.String farbe, javax.xml.rpc.holders.LongHolder autoID) throws java.rmi.RemoteException {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[3]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("http://www.example.org/AKWS1011GXX/farbeAendern");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://www.example.org/AKWS1011GXX/", "farbeAendern"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {farbe, new java.lang.Long(autoID.value)});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            java.util.Map _output;
+            _output = _call.getOutputParams();
+            try {
+                autoID.value = ((java.lang.Long) _output.get(new javax.xml.namespace.QName("", "autoID"))).longValue();
+            } catch (java.lang.Exception _exception) {
+                autoID.value = ((java.lang.Long) org.apache.axis.utils.JavaUtils.convert(_output.get(new javax.xml.namespace.QName("", "autoID")), long.class)).longValue();
+            }
+            try {
+                return ((java.lang.Boolean) _resp).booleanValue();
+            } catch (java.lang.Exception _exception) {
+                return ((java.lang.Boolean) org.apache.axis.utils.JavaUtils.convert(_resp, boolean.class)).booleanValue();
             }
         }
   } catch (org.apache.axis.AxisFault axisFaultException) {

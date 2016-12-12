@@ -15,7 +15,7 @@
   <service name="AutoKauf" provider="java:RPC" style="wrapped" use="literal">
       <parameter name="wsdlTargetNamespace" value="http://www.example.org/AKWS1011GXX/"/>
       <parameter name="wsdlServiceElement" value="AutoKaufService"/>
-      <parameter name="schemaUnqualified" value="http://AKWS1011GXX/AutoKauf/Types"/>
+      <parameter name="schemaUnqualified" value="http://AKWS1011GXX/AutoKauf/Types,http://www.example.org/AKWS1011GXX/"/>
       <parameter name="wsdlServicePort" value="AutoKauf"/>
       <parameter name="className" value="org.example.www.AKWS1011GXX.AutoKaufSoapBindingSkeleton"/>
       <parameter name="wsdlPortType" value="AutoKauf"/>

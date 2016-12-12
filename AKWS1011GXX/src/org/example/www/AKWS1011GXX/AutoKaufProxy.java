@@ -1,5 +1,9 @@
 package org.example.www.AKWS1011GXX;
 
+import java.rmi.RemoteException;
+
+import javax.xml.rpc.holders.LongHolder;
+
 public class AutoKaufProxy implements org.example.www.AKWS1011GXX.AutoKauf {
   private String _endpoint = null;
   private org.example.www.AKWS1011GXX.AutoKauf autoKauf = null;
@@ -61,6 +65,14 @@ public class AutoKaufProxy implements org.example.www.AKWS1011GXX.AutoKauf {
       _initAutoKaufProxy();
     return autoKauf.alleAutosAnzeigen(in);
   }
+
+
+@Override
+public boolean farbeAendern(String farbe, LongHolder autoID) throws RemoteException {
+    if (autoKauf == null)
+        _initAutoKaufProxy();
+	return autoKauf.farbeAendern(farbe, autoID);
+}
   
   
 }

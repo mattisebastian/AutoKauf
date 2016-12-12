@@ -11,10 +11,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.rpc.holders.LongHolder;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
@@ -70,6 +72,24 @@ public class AutoKaufSoapBindingImpl implements org.example.www.AKWS1011GXX.Auto
 			return null;
 		return autos;
 	}
+
+	public boolean farbeAendern(java.lang.String farbe, LongHolder autoID) throws java.rmi.RemoteException {
+		Auto[] autos = leseDatensaetze();
+		if (autos != null){
+			for(int i = 0; i < autos.length; i++){
+				Auto auto = autos[i];
+				if (auto.getAutoID() != autoID.value)
+					continue; 
+				if(auto.getFarbe().equals(farbe) || farbe == null ||farbe.equals(""))
+					return false;
+				
+				auto.setFarbe(farbe);
+				return schreibeDatensaetze(autos);
+			}
+		}
+        return false;
+    }
+
 
 	private boolean schreibeDatensaetze(Auto[] autos) {
 		if (autos == null)

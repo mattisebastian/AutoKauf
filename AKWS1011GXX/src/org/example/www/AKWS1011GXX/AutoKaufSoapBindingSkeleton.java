@@ -36,7 +36,7 @@ public class AutoKaufSoapBindingSkeleton implements org.example.www.AKWS1011GXX.
         _oper = new org.apache.axis.description.OperationDesc("kaufeAuto", _params, new javax.xml.namespace.QName("", "kaufOK"));
         _oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "boolean"));
         _oper.setElementQName(new javax.xml.namespace.QName("http://AKWS1011GXX/AutoKauf/Types", "kaufeAuto"));
-        _oper.setSoapAction("http://www.example.org/AKWS1011GXXtemp/kaufeAuto");
+        _oper.setSoapAction("http://www.example.org/AKWS1011GXX/kaufeAuto");
         _myOperationsList.add(_oper);
         if (_myOperations.get("kaufeAuto") == null) {
             _myOperations.put("kaufeAuto", new java.util.ArrayList());
@@ -48,7 +48,7 @@ public class AutoKaufSoapBindingSkeleton implements org.example.www.AKWS1011GXX.
         _oper = new org.apache.axis.description.OperationDesc("verkaufeAuto", _params, new javax.xml.namespace.QName("", "verkaufOK"));
         _oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "boolean"));
         _oper.setElementQName(new javax.xml.namespace.QName("http://AKWS1011GXX/AutoKauf/Types", "verkaufeAuto"));
-        _oper.setSoapAction("http://www.example.org/AKWS1011GXXtemp/verkaufeAuto");
+        _oper.setSoapAction("http://www.example.org/AKWS1011GXX/verkaufeAuto");
         _myOperationsList.add(_oper);
         if (_myOperations.get("verkaufeAuto") == null) {
             _myOperations.put("verkaufeAuto", new java.util.ArrayList());
@@ -60,12 +60,25 @@ public class AutoKaufSoapBindingSkeleton implements org.example.www.AKWS1011GXX.
         _oper = new org.apache.axis.description.OperationDesc("alleAutosAnzeigen", _params, new javax.xml.namespace.QName("", "AutoArrayItems"));
         _oper.setReturnType(new javax.xml.namespace.QName("http://AKWS1011GXX/AutoKauf/Types", "Auto"));
         _oper.setElementQName(new javax.xml.namespace.QName("http://AKWS1011GXX/AutoKauf/Types", "alleAutosAnzeigen"));
-        _oper.setSoapAction("http://www.example.org/AKWS1011GXXtemp/alleAutosAnzeigen");
+        _oper.setSoapAction("http://www.example.org/AKWS1011GXX/alleAutosAnzeigen");
         _myOperationsList.add(_oper);
         if (_myOperations.get("alleAutosAnzeigen") == null) {
             _myOperations.put("alleAutosAnzeigen", new java.util.ArrayList());
         }
         ((java.util.List)_myOperations.get("alleAutosAnzeigen")).add(_oper);
+        _params = new org.apache.axis.description.ParameterDesc [] {
+            new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "farbe"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false), 
+            new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "autoID"), org.apache.axis.description.ParameterDesc.INOUT, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "long"), long.class, false, false), 
+        };
+        _oper = new org.apache.axis.description.OperationDesc("farbeAendern", _params, new javax.xml.namespace.QName("", "erfolgreichGeaendert"));
+        _oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "boolean"));
+        _oper.setElementQName(new javax.xml.namespace.QName("http://www.example.org/AKWS1011GXX/", "farbeAendern"));
+        _oper.setSoapAction("http://www.example.org/AKWS1011GXX/farbeAendern");
+        _myOperationsList.add(_oper);
+        if (_myOperations.get("farbeAendern") == null) {
+            _myOperations.put("farbeAendern", new java.util.ArrayList());
+        }
+        ((java.util.List)_myOperations.get("farbeAendern")).add(_oper);
     }
 
     public AutoKaufSoapBindingSkeleton() {
@@ -90,6 +103,12 @@ public class AutoKaufSoapBindingSkeleton implements org.example.www.AKWS1011GXX.
     public AKWS1011GXX.AutoKauf.Types.Auto[] alleAutosAnzeigen(java.lang.String in) throws java.rmi.RemoteException
     {
         AKWS1011GXX.AutoKauf.Types.Auto[] ret = impl.alleAutosAnzeigen(in);
+        return ret;
+    }
+
+    public boolean farbeAendern(java.lang.String farbe, javax.xml.rpc.holders.LongHolder autoID) throws java.rmi.RemoteException
+    {
+        boolean ret = impl.farbeAendern(farbe, autoID);
         return ret;
     }
 

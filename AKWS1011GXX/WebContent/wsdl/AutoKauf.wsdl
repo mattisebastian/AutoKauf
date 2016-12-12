@@ -54,22 +54,40 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
     <attribute name="gekauft" type="xsd:boolean"/>
    </complexType>
   </schema>
-        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/AKWS1011GXX/">
+        <xsd:schema targetNamespace="http://www.example.org/AKWS1011GXX/">
         	<xsd:element name="AutoHinzu" type="impl:AutoHinzu">
         	</xsd:element>
         	<xsd:element name="AutoHinzuResponse">
         		<xsd:complexType>
         			<xsd:sequence>
-        				<xsd:element name="out" type="xsd:string"></xsd:element>
+        				<xsd:element name="out" type="xsd:string"/>
         			</xsd:sequence>
         		</xsd:complexType>
         	</xsd:element>
         	<xsd:complexType name="AutoHinzu">
         		<xsd:sequence>
-        			<xsd:element name="color" type="xsd:string"></xsd:element>
-        			<xsd:element name="sitze" type="xsd:int"></xsd:element>
+        			<xsd:element name="color" type="xsd:string"/>
+        			<xsd:element name="sitze" type="xsd:int"/>
         		</xsd:sequence>
         	</xsd:complexType>
+        	<xsd:element name="farbeAendern">
+        		<xsd:complexType>
+        			<xsd:sequence>
+        				<xsd:element name="farbe" type="xsd:string"/>
+        				<xsd:element name="autoID" type="xsd:long">
+        				</xsd:element>
+        			</xsd:sequence>
+        		</xsd:complexType>
+        	</xsd:element>
+        	<xsd:element name="farbeAendernResponse">
+        		<xsd:complexType>
+        			<xsd:sequence>
+        				<xsd:element name="erfolgreichGeaendert" type="xsd:boolean"/>
+        				<xsd:element name="autoID" type="xsd:long">
+        				</xsd:element>
+        			</xsd:sequence>
+        		</xsd:complexType>
+        	</xsd:element>
         </xsd:schema>
     </wsdl:types>
 
@@ -122,10 +140,16 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    </wsdl:message>
 
    <wsdl:message name="AutoHinzuRequest">
-   	<wsdl:part name="parameters" element="impl:AutoHinzu"></wsdl:part>
+   	<wsdl:part element="impl:AutoHinzu" name="parameters"/>
    </wsdl:message>
    <wsdl:message name="AutoHinzuResponse">
-   	<wsdl:part name="parameters" element="impl:AutoHinzuResponse"></wsdl:part>
+   	<wsdl:part element="impl:AutoHinzuResponse" name="parameters"/>
+   </wsdl:message>
+   <wsdl:message name="farbeAendernRequest">
+   	<wsdl:part element="impl:farbeAendern" name="parameters"/>
+   </wsdl:message>
+   <wsdl:message name="farbeAendernResponse">
+   	<wsdl:part element="impl:farbeAendernResponse" name="parameters"/>
    </wsdl:message>
    <wsdl:portType name="AutoKauf">
 
@@ -165,70 +189,79 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
-      <wsdl:operation name="AutoHinzu">
-      	<wsdl:input message="impl:AutoHinzuRequest"></wsdl:input>
-      	<wsdl:output message="impl:AutoHinzuResponse"></wsdl:output>
+      <wsdl:operation name="farbeAendern">
+      	<wsdl:input message="impl:farbeAendernRequest"/>
+      	<wsdl:output message="impl:farbeAendernResponse"/>
       </wsdl:operation>
    </wsdl:portType>
 
    <wsdl:binding name="AutoKaufSoapBinding" type="impl:AutoKauf">
 
-      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 
-      <wsdl:operation name="kaufeAuto">
+   	<wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+   	<wsdl:operation name="kaufeAuto">
 
-         <wsdlsoap:operation soapAction="http://www.example.org/AKWS1011GXXtemp/kaufeAuto"/>
 
-         <wsdl:input name="kaufeAutoRequest">
+   		<wsdlsoap:operation soapAction="http://www.example.org/AKWS1011GXX/kaufeAuto"/>
+   		<wsdl:input name="kaufeAutoRequest">
 
-            <wsdlsoap:body use="literal"/>
 
-         </wsdl:input>
+   			<wsdlsoap:body use="literal"/>
+   		</wsdl:input>
 
-         <wsdl:output name="kaufeAutoResponse">
+   		<wsdl:output name="kaufeAutoResponse">
 
-            <wsdlsoap:body use="literal"/>
 
-         </wsdl:output>
+   			<wsdlsoap:body use="literal"/>
+   		</wsdl:output>
 
-      </wsdl:operation>
+   	</wsdl:operation>
 
-      <wsdl:operation name="verkaufeAuto">
+   	<wsdl:operation name="verkaufeAuto">
 
-         <wsdlsoap:operation soapAction="http://www.example.org/AKWS1011GXXtemp/verkaufeAuto"/>
 
-         <wsdl:input name="verkaufeAutoRequest">
+   		<wsdlsoap:operation soapAction="http://www.example.org/AKWS1011GXX/verkaufeAuto"/>
+   		<wsdl:input name="verkaufeAutoRequest">
 
-            <wsdlsoap:body use="literal"/>
 
-         </wsdl:input>
+   			<wsdlsoap:body use="literal"/>
+   		</wsdl:input>
 
-         <wsdl:output name="verkaufeAutoResponse">
+   		<wsdl:output name="verkaufeAutoResponse">
 
-            <wsdlsoap:body use="literal"/>
 
-         </wsdl:output>
+   			<wsdlsoap:body use="literal"/>
+   		</wsdl:output>
 
-      </wsdl:operation>
+   	</wsdl:operation>
 
-      <wsdl:operation name="alleAutosAnzeigen">
+   	<wsdl:operation name="alleAutosAnzeigen">
 
-         <wsdlsoap:operation soapAction="http://www.example.org/AKWS1011GXXtemp/alleAutosAnzeigen"/>
 
-         <wsdl:input name="alleAutosAnzeigenRequest">
+   		<wsdlsoap:operation soapAction="http://www.example.org/AKWS1011GXX/alleAutosAnzeigen"/>
+   		<wsdl:input name="alleAutosAnzeigenRequest">
 
-            <wsdlsoap:body use="literal"/>
 
-         </wsdl:input>
+   			<wsdlsoap:body use="literal"/>
+   		</wsdl:input>
 
-         <wsdl:output name="alleAutosAnzeigenResponse">
+   		<wsdl:output name="alleAutosAnzeigenResponse">
 
-            <wsdlsoap:body use="literal"/>
 
-         </wsdl:output>
+   			<wsdlsoap:body use="literal"/>
+   		</wsdl:output>
 
-      </wsdl:operation>
+   	</wsdl:operation>
 
+   	<wsdl:operation name="farbeAendern">
+   		<wsdlsoap:operation soapAction="http://www.example.org/AKWS1011GXX/farbeAendern"/>
+   		<wsdl:input>
+   			<wsdlsoap:body use="literal"/>
+   		</wsdl:input>
+   		<wsdl:output>
+   			<wsdlsoap:body use="literal"/>
+   		</wsdl:output>
+   	</wsdl:operation>
    </wsdl:binding>
 
    <wsdl:service name="AutoKaufService">
