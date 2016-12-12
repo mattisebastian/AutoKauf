@@ -15,24 +15,26 @@
 
 
 String methodname = request.getParameter("method");
+String farbe = request.getParameter("color");
 long autoID = (long)Long.valueOf(request.getParameter("autoID"));
+
 if (methodname.equals("kaufeAuto")) {
 boolean kaResponse = proxy.kaufeAuto(autoID);
 %>
-<p>Der Autokauf konnte <%=kaResponse?"":"leider <b>nicht</b>"%> erfolgreich durchgeführt werden.</p>
+<p>Die Buchung der Limo konnte <%=kaResponse?"":"leider <b>nicht</b>"%> erfolgreich durchgeführt werden.</p>
 <%
 }
 else if (methodname.equals("verkaufeAuto")) {
 boolean vkaResponse = proxy.verkaufeAuto(autoID);
 %>
-<p>Der Autokaufverkauf konnte <%=vkaResponse?"":"leider nicht" %> erfolgreich durchgeführt werden.</p>
+<p>Die Buchung der Limo konnte <%=vkaResponse?"":"leider nicht" %> erfolgreich durchgeführt werden.</p>
 <%
 }
 else if (methodname.equals("rotLackieren")) {
 	javax.xml.rpc.holders.LongHolder autoID_long = new javax.xml.rpc.holders.LongHolder(autoID);
-	boolean lackResponse = proxy.farbeAendern("rot", autoID_long);
+	boolean lackResponse = proxy.farbeAendern(farbe, autoID_long);
 	%>
-	<p>Das Auto wurde <%=lackResponse?"":"leider nicht" %> überlackiert.</p>
+	<p>Die Limo wurde <%=lackResponse?"":"leider nicht" %> überlackiert.</p>
 	<%
 }
 else {

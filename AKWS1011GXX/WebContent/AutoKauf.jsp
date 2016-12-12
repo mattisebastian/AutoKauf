@@ -1,15 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <script type="text/javascript" src="./js/script.js"></script>
-<!-- Latest compiled and minified Bootstrap JavaScript -->
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-	crossorigin="anonymous"></script>
+
 <style type="text/css">
 <!--
 @import url(./css/format.css);
@@ -27,13 +23,13 @@
 	<div class="container-fluid">
 		<jsp:useBean id="proxy" scope="session"
 			class="org.example.www.AKWS1011GXX.AutoKaufProxy" />
-		<h1 align="center">Portal - Autokauf</h1>
-		<table class="table">
+		<h1 align="center">LimoLeasing</h1>
+		<table class="table table-bordered">
 			<tr class="tr_head">
-				<th>AutoID</th>
-				<th>Autofarbe</th>
+				<th>Limo ID</th>
+				<th>Limo Farbe</th>
 				<th>Sitzplätze</th>
-				<th>Bereits gekauft</th>
+				<th>Bereits gebucht</th>
 			</tr>
 			<%
 				AKWS1011GXX.AutoKauf.Types.Auto[] autos = proxy.alleAutosAnzeigen("in");
@@ -53,13 +49,22 @@
 		<p>
 		<form method="post" action="Ergebnis.jsp">
 			<input type="hidden" name="method" value="" /> <input type="hidden"
-				name="autoID" value="" /> <input type="button"
-				class="btn btn-success" name="kaufeAuto" value="Kaufen"
-				onclick="sendRequest(this)" /> <input type="button"
-				class="btn btn-warning" name="verkaufeAuto" value="Verkaufen"
-				onclick="sendRequest(this)" /> <input type="button"
-				class="btn btn-danger" name="rotLackieren" value="Rot lackieren"
-				onclick="sendRequest(this)" />
+				name="autoID" value="" /> <input type="hidden"
+				name="color" value="" />
+			<div class="form-group">
+				<input type="button" class="btn btn-success" name="kaufeAuto"
+					value="Buchen" onclick="sendRequest(this)" /> <input type="button"
+					class="btn btn-warning" name="verkaufeAuto" value="Stornieren"
+					onclick="sendRequest(this)" />
+			</div>
+			<div class="form-group">
+				<label for="farbeEintragen">Farbe</label> <input id="farbeEintragen"
+					class="form-control" type="text" name="farbe"
+					placeholder="Farbe eintragen" /> 
+			</div>
+			<input type="button"
+					class="btn btn-danger" name="rotLackieren" value="Umlackieren"
+					onclick="sendRequest(this)" />
 		</form>
 		</p>
 	</div>

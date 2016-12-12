@@ -6,6 +6,7 @@ exit;
 }""
 source.form.method.value=source.name;
 source.form.autoID.value=selectedElement.id.substring(3);
+source.form.color.value=source.form.farbeEintragen.value;
 source.form.submit();
 }
 function selectAuto(element){

@@ -8,31 +8,12 @@ font-style:normal;
 font-weight:bold;
 border-bottom:solid thin;
 }
-table {border-collapse:collapse;
-border-width:1px;
-border-style:solid;
-border-color:navajowhite;
-}
-tr {height:30px;
-}
 .tr_selected {font-weight:bold;
-background-color:sandybrown;
+background-color:#5bc0de;
 color:floralwhite;
 }
 .tr_hover {font-weight:bold;
-background-color:navajowhite;
+background-color:#c1e8f2;
 color:floralwhite;
 cursor:pointer;
-}
-th {text-align:center;
-background-color:navajowhite;
-border-bottom:solid thin;
-padding:5px;
-padding-top:10px;
-}
-td {width:150px;
-border-top:dashed thin;
-border-color:navajowhite;
-padding-top:5px;
-padding-left:5px;
 }
