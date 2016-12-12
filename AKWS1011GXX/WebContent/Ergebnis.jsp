@@ -1,3 +1,4 @@
+<%@page import="org.omg.CORBA.LongHolder"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -11,6 +12,8 @@
 <br/>
 <h1 align="center">Portal - Autokauf</h1>
 <%
+
+
 String methodname = request.getParameter("method");
 long autoID = (long)Long.valueOf(request.getParameter("autoID"));
 if (methodname.equals("kaufeAuto")) {
@@ -26,7 +29,8 @@ boolean vkaResponse = proxy.verkaufeAuto(autoID);
 <%
 }
 else if (methodname.equals("rotLackieren")) {
-	boolean lackResponse = proxy.farbeAendern("rot", autoID);
+	javax.xml.rpc.holders.LongHolder autoID_long = new javax.xml.rpc.holders.LongHolder(autoID);
+	boolean lackResponse = proxy.farbeAendern("rot", autoID_long);
 	%>
 	<p>Das Auto wurde <%=lackResponse?"":"leider nicht" %> überlackiert.</p>
 	<%
