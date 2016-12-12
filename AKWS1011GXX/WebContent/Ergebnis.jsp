@@ -25,6 +25,12 @@ boolean vkaResponse = proxy.verkaufeAuto(autoID);
 <p>Der Autokaufverkauf konnte <%=vkaResponse?"":"leider nicht" %> erfolgreich durchgeführt werden.</p>
 <%
 }
+else if (methodname.equals("rotLackieren")) {
+	boolean lackResponse = proxy.farbeAendern("rot", autoID);
+	%>
+	<p>Das Auto wurde <%=lackResponse?"":"leider nicht" %> überlackiert.</p>
+	<%
+}
 else {
 %>
 <p>Unbekannter Fehler!</p>
