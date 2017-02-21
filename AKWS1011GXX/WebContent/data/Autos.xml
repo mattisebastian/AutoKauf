@@ -6,35 +6,6 @@ xsi:noNamespaceSchemaLocation="Autos.xsd">
  <farbe>rot</farbe>
  <anzahlSitze>4</anzahlSitze>
  <gekauft>false</gekauft>
- </AutoArrayItem>
- <AutoArrayItem>
- <autoID>2</autoID>
- <farbe>blau</farbe>
- <anzahlSitze>5</anzahlSitze>
- <gekauft>true</gekauft>
- </AutoArrayItem>
- <AutoArrayItem>
- <autoID>3</autoID>
- <farbe>dunkelorange</farbe>
- <anzahlSitze>8</anzahlSitze>
- <gekauft>true</gekauft>
- </AutoArrayItem>
- <AutoArrayItem>
- <autoID>4</autoID>
- <farbe>rosa</farbe>
- <anzahlSitze>3</anzahlSitze>
- <gekauft>true</gekauft>
- </AutoArrayItem>
- <AutoArrayItem>
- <autoID>5</autoID>
- <farbe>gruen</farbe>
- <anzahlSitze>5</anzahlSitze>
- <gekauft>true</gekauft>
- </AutoArrayItem>
- <AutoArrayItem>
- <autoID>6</autoID>
- <farbe>hellweiss</farbe>
- <anzahlSitze>2</anzahlSitze>
- <gekauft>true</gekauft>
+ <userID>0</userID>
  </AutoArrayItem>
 </AutoArrayItems>

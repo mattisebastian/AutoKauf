@@ -16,6 +16,8 @@ public class Auto  implements java.io.Serializable {
 
     private boolean gekauft;  // attribute
 
+    private long userID;  // attribute
+
     public Auto() {
     }
 
@@ -23,11 +25,13 @@ public class Auto  implements java.io.Serializable {
            int anzahlSitze,
            long autoID,
            java.lang.String farbe,
-           boolean gekauft) {
+           boolean gekauft,
+           long userID) {
            this.anzahlSitze = anzahlSitze;
            this.autoID = autoID;
            this.farbe = farbe;
            this.gekauft = gekauft;
+           this.userID = userID;
     }
 
 
@@ -110,6 +114,26 @@ public class Auto  implements java.io.Serializable {
         this.gekauft = gekauft;
     }
 
+
+    /**
+     * Gets the userID value for this Auto.
+     * 
+     * @return userID
+     */
+    public long getUserID() {
+        return userID;
+    }
+
+
+    /**
+     * Sets the userID value for this Auto.
+     * 
+     * @param userID
+     */
+    public void setUserID(long userID) {
+        this.userID = userID;
+    }
+
     private java.lang.Object __equalsCalc = null;
     public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof Auto)) return false;
@@ -127,7 +151,8 @@ public class Auto  implements java.io.Serializable {
             ((this.farbe==null && other.getFarbe()==null) || 
              (this.farbe!=null &&
               this.farbe.equals(other.getFarbe()))) &&
-            this.gekauft == other.isGekauft();
+            this.gekauft == other.isGekauft() &&
+            this.userID == other.getUserID();
         __equalsCalc = null;
         return _equals;
     }
@@ -145,6 +170,7 @@ public class Auto  implements java.io.Serializable {
             _hashCode += getFarbe().hashCode();
         }
         _hashCode += (isGekauft() ? Boolean.TRUE : Boolean.FALSE).hashCode();
+        _hashCode += new Long(getUserID()).hashCode();
         __hashCodeCalc = false;
         return _hashCode;
     }
@@ -174,6 +200,11 @@ public class Auto  implements java.io.Serializable {
         attrField.setFieldName("gekauft");
         attrField.setXmlName(new javax.xml.namespace.QName("", "gekauft"));
         attrField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "boolean"));
+        typeDesc.addFieldDesc(attrField);
+        attrField = new org.apache.axis.description.AttributeDesc();
+        attrField.setFieldName("userID");
+        attrField.setXmlName(new javax.xml.namespace.QName("", "userID"));
+        attrField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "long"));
         typeDesc.addFieldDesc(attrField);
     }
 

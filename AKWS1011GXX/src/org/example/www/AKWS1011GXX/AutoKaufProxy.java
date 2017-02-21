@@ -48,11 +48,6 @@ public class AutoKaufProxy implements org.example.www.AKWS1011GXX.AutoKauf {
     return autoKauf;
   }
   
-  public boolean kaufeAuto(long autoID) throws java.rmi.RemoteException{
-    if (autoKauf == null)
-      _initAutoKaufProxy();
-    return autoKauf.kaufeAuto(autoID);
-  }
   
   public boolean verkaufeAuto(long autoID) throws java.rmi.RemoteException{
     if (autoKauf == null)
@@ -72,6 +67,20 @@ public boolean farbeAendern(String farbe, LongHolder autoID) throws RemoteExcept
     if (autoKauf == null)
         _initAutoKaufProxy();
 	return autoKauf.farbeAendern(farbe, autoID);
+}
+
+@Override
+public boolean checkLogin(String id, String password) throws RemoteException {
+    if (autoKauf == null)
+        _initAutoKaufProxy();
+      return autoKauf.checkLogin(id, password);
+}
+
+@Override
+public boolean kaufeAuto(long autoID, long userID) throws RemoteException {
+    if (autoKauf == null)
+        _initAutoKaufProxy();
+      return autoKauf.kaufeAuto(autoID, userID);
 }
   
   

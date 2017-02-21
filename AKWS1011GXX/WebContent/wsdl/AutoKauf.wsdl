@@ -8,6 +8,7 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
     <complexType>
      <sequence>
       <element name="autoID" type="xsd:long"/>
+      <element name="userID" type="xsd:long"/>
      </sequence>
     </complexType>
    </element>
@@ -51,9 +52,12 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
     <attribute name="anzahlSitze" type="xsd:int"/>
     <attribute name="autoID" type="xsd:long"/>
     <attribute name="farbe" type="xsd:string"/>
-    <attribute name="gekauft" type="xsd:boolean"/>
+    <attribute name="gekauft" type="xsd:boolean"/> 	
+    <attribute name="userID" type="xsd:long"/> 	
+       
    </complexType>
-  </schema>
+  
+        </schema>
         <xsd:schema targetNamespace="http://www.example.org/AKWS1011GXX/">
         	<xsd:element name="AutoHinzu" type="impl:AutoHinzu">
         	</xsd:element>
@@ -85,6 +89,48 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
         				<xsd:element name="erfolgreichGeaendert" type="xsd:boolean"/>
         				<xsd:element name="autoID" type="xsd:long">
         				</xsd:element>
+        			</xsd:sequence>
+        		</xsd:complexType>
+        	</xsd:element>
+        	<xsd:element name="gebuchtVon">
+        		<xsd:complexType>
+        			<xsd:sequence>
+
+        				<xsd:element name="in" type="xsd:int"/>
+        			</xsd:sequence>
+        		</xsd:complexType>
+        	</xsd:element>
+        	<xsd:element name="gebuchtVonResponse">
+        		<xsd:complexType>
+        			<xsd:sequence>
+
+        				<xsd:element name="out" type="xsd:string"/>
+        			</xsd:sequence>
+        		</xsd:complexType>
+        	</xsd:element>
+        	<xsd:element name="checkLogin">
+        		<xsd:complexType>
+        			<xsd:sequence>
+
+        				<xsd:element name="id" type="xsd:string"/>
+        				<xsd:element name="password" type="xsd:string">
+        				</xsd:element>
+        			</xsd:sequence>
+        		</xsd:complexType>
+        	</xsd:element>
+        	<xsd:element name="NewOperationResponse">
+        		<xsd:complexType>
+        			<xsd:sequence>
+
+        				<xsd:element name="out" type="xsd:string"/>
+        			</xsd:sequence>
+        		</xsd:complexType>
+        	</xsd:element>
+        	<xsd:element name="checkLoginResponse1">
+        		<xsd:complexType>
+        			<xsd:sequence>
+
+        				<xsd:element name="out" type="xsd:boolean"/>
         			</xsd:sequence>
         		</xsd:complexType>
         	</xsd:element>
@@ -151,6 +197,21 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    <wsdl:message name="farbeAendernResponse">
    	<wsdl:part element="impl:farbeAendernResponse" name="parameters"/>
    </wsdl:message>
+   <wsdl:message name="gebuchtVonRequest">
+   	<wsdl:part element="impl:gebuchtVon" name="parameters"/>
+   </wsdl:message>
+   <wsdl:message name="gebuchtVonResponse">
+   	<wsdl:part element="impl:gebuchtVonResponse" name="parameters"/>
+   </wsdl:message>
+   <wsdl:message name="checkLoginRequest">
+   	<wsdl:part element="impl:checkLogin" name="parameters"/>
+   </wsdl:message>
+   <wsdl:message name="NewOperationResponse">
+   	<wsdl:part element="impl:NewOperationResponse" name="parameters"/>
+   </wsdl:message>
+   <wsdl:message name="checkLoginResponse1">
+   	<wsdl:part element="impl:checkLoginResponse1" name="parameters"/>
+   </wsdl:message>
    <wsdl:portType name="AutoKauf">
 
       <wsdl:operation name="kaufeAuto">
@@ -193,66 +254,44 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
       	<wsdl:input message="impl:farbeAendernRequest"/>
       	<wsdl:output message="impl:farbeAendernResponse"/>
       </wsdl:operation>
+
+      <wsdl:operation name="checkLogin">
+      	<wsdl:input message="impl:checkLoginRequest"/>
+      	<wsdl:output message="impl:checkLoginResponse1"/>
+      </wsdl:operation>
    </wsdl:portType>
 
-   <wsdl:binding name="AutoKaufSoapBinding" type="impl:AutoKauf">
 
 
+   <wsdl:binding name="NewBinding" type="impl:AutoKauf">
    	<wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
    	<wsdl:operation name="kaufeAuto">
-
-
    		<wsdlsoap:operation soapAction="http://www.example.org/AKWS1011GXX/kaufeAuto"/>
    		<wsdl:input name="kaufeAutoRequest">
-
-
    			<wsdlsoap:body use="literal"/>
    		</wsdl:input>
-
    		<wsdl:output name="kaufeAutoResponse">
-
-
    			<wsdlsoap:body use="literal"/>
    		</wsdl:output>
-
    	</wsdl:operation>
-
    	<wsdl:operation name="verkaufeAuto">
-
-
    		<wsdlsoap:operation soapAction="http://www.example.org/AKWS1011GXX/verkaufeAuto"/>
    		<wsdl:input name="verkaufeAutoRequest">
-
-
    			<wsdlsoap:body use="literal"/>
    		</wsdl:input>
-
    		<wsdl:output name="verkaufeAutoResponse">
-
-
    			<wsdlsoap:body use="literal"/>
    		</wsdl:output>
-
    	</wsdl:operation>
-
    	<wsdl:operation name="alleAutosAnzeigen">
-
-
    		<wsdlsoap:operation soapAction="http://www.example.org/AKWS1011GXX/alleAutosAnzeigen"/>
    		<wsdl:input name="alleAutosAnzeigenRequest">
-
-
    			<wsdlsoap:body use="literal"/>
    		</wsdl:input>
-
    		<wsdl:output name="alleAutosAnzeigenResponse">
-
-
    			<wsdlsoap:body use="literal"/>
    		</wsdl:output>
-
    	</wsdl:operation>
-
    	<wsdl:operation name="farbeAendern">
    		<wsdlsoap:operation soapAction="http://www.example.org/AKWS1011GXX/farbeAendern"/>
    		<wsdl:input>
@@ -262,11 +301,19 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    			<wsdlsoap:body use="literal"/>
    		</wsdl:output>
    	</wsdl:operation>
+   	<wsdl:operation name="checkLogin">
+   		<wsdlsoap:operation soapAction="http://www.example.org/AKWS1011GXX/checkLogin"/>
+   		<wsdl:input>
+   			<wsdlsoap:body use="literal"/>
+   		</wsdl:input>
+   		<wsdl:output>
+   			<wsdlsoap:body use="literal"/>
+   		</wsdl:output>
+   	</wsdl:operation>
    </wsdl:binding>
-
    <wsdl:service name="AutoKaufService">
 
-      <wsdl:port binding="impl:AutoKaufSoapBinding" name="AutoKauf">
+      <wsdl:port binding="impl:NewBinding" name="AutoKauf">
 
          <wsdlsoap:address location="http://localhost:8080/AKWS1011GXX/services/AutoKauf"/>
 

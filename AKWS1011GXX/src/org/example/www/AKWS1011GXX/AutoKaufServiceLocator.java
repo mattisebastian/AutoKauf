@@ -52,7 +52,7 @@ public class AutoKaufServiceLocator extends org.apache.axis.client.Service imple
 
     public org.example.www.AKWS1011GXX.AutoKauf getAutoKauf(java.net.URL portAddress) throws javax.xml.rpc.ServiceException {
         try {
-            org.example.www.AKWS1011GXX.AutoKaufSoapBindingStub _stub = new org.example.www.AKWS1011GXX.AutoKaufSoapBindingStub(portAddress, this);
+            org.example.www.AKWS1011GXX.NewBindingStub _stub = new org.example.www.AKWS1011GXX.NewBindingStub(portAddress, this);
             _stub.setPortName(getAutoKaufWSDDServiceName());
             return _stub;
         }
@@ -73,7 +73,7 @@ public class AutoKaufServiceLocator extends org.apache.axis.client.Service imple
     public java.rmi.Remote getPort(Class serviceEndpointInterface) throws javax.xml.rpc.ServiceException {
         try {
             if (org.example.www.AKWS1011GXX.AutoKauf.class.isAssignableFrom(serviceEndpointInterface)) {
-                org.example.www.AKWS1011GXX.AutoKaufSoapBindingStub _stub = new org.example.www.AKWS1011GXX.AutoKaufSoapBindingStub(new java.net.URL(AutoKauf_address), this);
+                org.example.www.AKWS1011GXX.NewBindingStub _stub = new org.example.www.AKWS1011GXX.NewBindingStub(new java.net.URL(AutoKauf_address), this);
                 _stub.setPortName(getAutoKaufWSDDServiceName());
                 return _stub;
             }

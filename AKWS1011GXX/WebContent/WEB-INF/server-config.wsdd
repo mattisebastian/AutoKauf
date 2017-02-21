@@ -7,8 +7,8 @@
   <ns1:parameter name="dotNetSoapEncFix" value="true"/>
   <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
   <ns1:parameter name="sendXMLDeclaration" value="true"/>
-  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
   <ns1:parameter name="sendXsiTypes" value="true"/>
+  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
   <ns1:requestFlow>
    <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
     <ns1:parameter name="scope" value="session"/>
@@ -26,7 +26,7 @@
   <ns1:parameter name="allowedMethods" value="*"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="wsdlPortType" value="AutoKauf"/>
-  <ns1:parameter name="className" value="org.example.www.AKWS1011GXX.AutoKaufSoapBindingSkeleton"/>
+  <ns1:parameter name="className" value="org.example.www.AKWS1011GXX.NewBindingSkeleton"/>
   <ns1:parameter name="wsdlServicePort" value="AutoKauf"/>
   <ns1:parameter name="wsdlTargetNamespace" value="http://www.example.org/AKWS1011GXX/"/>
   <ns1:parameter name="wsdlServiceElement" value="AutoKaufService"/>

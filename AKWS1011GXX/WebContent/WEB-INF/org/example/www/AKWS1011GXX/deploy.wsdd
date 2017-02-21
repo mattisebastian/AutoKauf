@@ -17,7 +17,7 @@
       <parameter name="wsdlServiceElement" value="AutoKaufService"/>
       <parameter name="schemaUnqualified" value="http://AKWS1011GXX/AutoKauf/Types,http://www.example.org/AKWS1011GXX/"/>
       <parameter name="wsdlServicePort" value="AutoKauf"/>
-      <parameter name="className" value="org.example.www.AKWS1011GXX.AutoKaufSoapBindingSkeleton"/>
+      <parameter name="className" value="org.example.www.AKWS1011GXX.NewBindingSkeleton"/>
       <parameter name="wsdlPortType" value="AutoKauf"/>
       <parameter name="typeMappingVersion" value="1.2"/>
       <parameter name="allowedMethods" value="*"/>

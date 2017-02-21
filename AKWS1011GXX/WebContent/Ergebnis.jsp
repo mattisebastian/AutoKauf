@@ -17,9 +17,13 @@
 String methodname = request.getParameter("method");
 String farbe = request.getParameter("color");
 long autoID = (long)Long.valueOf(request.getParameter("autoID"));
+String user = "anonymous user";
+if(session.getAttribute("userName") != null){
+user = session.getAttribute("userName").toString();
+}
 
 if (methodname.equals("kaufeAuto")) {
-boolean kaResponse = proxy.kaufeAuto(autoID);
+boolean kaResponse = proxy.kaufeAuto(autoID, user);
 %>
 <p>Die Buchung der Limo konnte <%=kaResponse?"":"leider <b>nicht</b>"%> erfolgreich durchgeführt werden.</p>
 <%
